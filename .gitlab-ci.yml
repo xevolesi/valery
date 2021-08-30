@@ -2,7 +2,7 @@ image: python:3.8
 
 stages:
   - lint
- # - tests
+  - tests
 
 wemake_lint:
   stage: lint
@@ -10,11 +10,11 @@ wemake_lint:
     - pip3 install wemake-python-styleguide==0.15.2
     - flake8 .
 
-# test_week-01-modelling-part2:
-#   stage: tests
-#   script:
-#     - apt update
-#     - apt install -y libgl1-mesa-glx
-#     - cd hw-01-modeling
-#     - pip install -r requirements.txt
-#     - PYTHONPATH=$PWD pytest .
+test_hw-01-modeling:
+  stage: tests
+  script:
+    - apt update
+    - apt install -y libgl1-mesa-glx
+    - cd hw-01-modeling
+    - pip install -r requirements.txt
+    - PYTHONPATH=$PWD pytest .

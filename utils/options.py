@@ -3,6 +3,10 @@ import yaml
 from pydantic import BaseModel
 
 
+class TestsOptions(BaseModel):
+    csv_path: str
+
+
 class PathOptions(BaseModel):
     """Holds paths to files."""
 
@@ -16,6 +20,7 @@ class TrainingOptions(BaseModel):
     """Holds training options."""
 
     seed: int
+    image_size: int
 
 
 class OptionsKeeper(BaseModel):
@@ -23,6 +28,7 @@ class OptionsKeeper(BaseModel):
 
     training: TrainingOptions
     path: PathOptions
+    tests: TestsOptions
 
 
 def get_options(path_to_cfg: str) -> OptionsKeeper:

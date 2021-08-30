@@ -1,0 +1,16 @@
+image_name,agriculture,artisinal_mine,bare_ground,blooming,blow_down,clear,cloudy,conventional_mine,cultivation,habitation,haze,partly_cloudy,primary,road,selective_logging,slash_burn,water
+test_data/train_3.jpg,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+test_data/train_4.jpg,1,0,0,0,0,1,0,0,0,1,0,0,1,1,0,0,0
+test_data/train_5.jpg,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,1
+test_data/train_8.jpg,1,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0
+test_data/train_10.jpg,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,1
+test_data/train_0.jpg,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
+test_data/train_2.jpg,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+test_data/train_6.jpg,1,0,0,0,0,1,0,0,1,0,0,0,1,0,0,0,1
+test_data/train_9.jpg,1,0,0,0,0,1,0,0,1,0,0,0,1,1,0,0,0
+test_data/train_18.jpg,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
+test_data/train_1.jpg,1,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1
+test_data/train_7.jpg,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0
+test_data/train_11.jpg,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1
+test_data/train_12.jpg,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0
+test_data/train_15.jpg,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0
