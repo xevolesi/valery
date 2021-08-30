@@ -1,12 +1,12 @@
 """This module contains dataset class definition for Planet project."""
-import cv2
-import torch
-import numpy as np
 import typing as tp
-import pandas as pd
-import albumentations as album
-from torch.utils.data import Dataset
 
+import albumentations as album
+import cv2
+import numpy as np
+import pandas as pd
+import torch
+from torch.utils.data import Dataset
 
 DataPoint = tp.Tuple[
     tp.Union[torch.Tensor, np.ndarray],
@@ -15,19 +15,36 @@ DataPoint = tp.Tuple[
 
 
 class PlanetDataset(Dataset):
+    """Dataset for model deep learning things."""
+
     def __init__(
-        self, 
-        dataframe: pd.DataFrame, 
+        self,
+        dataframe: pd.DataFrame,
         transform: tp.Optional[album.Compose] = None
     ) -> None:
+        """
+        Parameters:
+            dataframe: Dataframe with paths and labels;
+            transform: Augmentation transformations.
+        """
         self.images: tp.Tuple[str] = tuple(dataframe['image_name'])
         self.labels: np.ndarray = dataframe.iloc[:, 1:].values
         self.transform = transform
 
     def __len__(self) -> int:
+        """Return the length of the dataset."""
         return len(self.list_images)
 
     def __getitem__(self, index: int) -> DataPoint:
+        """
+        Pick one data point.
+
+        Parameters:
+            index: The index of data point.
+
+        Returns:
+            Image and corresponding label.
+        """
         image_path = self.images[index]
         labels = self.labels[index, :]
         image = cv2.imread(image_path)

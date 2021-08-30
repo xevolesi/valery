@@ -1,21 +1,21 @@
-import torch
+"""Tests for custom dataset class."""
+import albumentations as album
 import numpy as np
 import pandas as pd
-import albumentations as album
+import torch
 from albumentations.pytorch.transforms import ToTensorV2
 
-from dataset import PlanetDataset
+from dataset.planet_dataset import PlanetDataset
 from utils.options import get_options
-
 
 options = get_options('config.yml')
 
 
 def test_dataset_torch():
-    df = pd.read_csv(options.tests.csv_path)
+    """Test dataset class with torch tensors as the outputs."""
     image_size = (options.training.image_size, options.training.image_size)
     dataset = PlanetDataset(
-        dataframe=df,
+        dataframe=pd.read_csv(options.tests.csv_path),
         transform=album.Compose(
             [
                 album.Resize(*image_size),
@@ -33,8 +33,8 @@ def test_dataset_torch():
 
 
 def test_dataset_numpy():
-    df = pd.read_csv(options.tests.csv_path)
-    dataset = PlanetDataset(dataframe=df)
+    """Test dataset class with numpy arrays as the outputs."""
+    dataset = PlanetDataset(dataframe=pd.read_csv(options.tests.csv_path))
     for data_point in dataset:
         image, label = data_point
         assert isinstance(image, np.ndarray)

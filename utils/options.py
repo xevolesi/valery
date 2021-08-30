@@ -4,6 +4,8 @@ from pydantic import BaseModel
 
 
 class TestsOptions(BaseModel):
+    """Holds options for tests."""
+
     csv_path: str
 
 
