@@ -1,0 +1,8 @@
+path:
+  path_to_images: 'data/train-jpg'
+  train_path: 'data/train_df.csv'
+  val_path: 'data/valid_df.csv'
+  test_path: 'data/test_df.csv'
+
+training:
+  seed: 39
