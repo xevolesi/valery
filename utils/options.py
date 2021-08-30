@@ -7,7 +7,7 @@ class TestsOptions(BaseModel):
     """Holds options for tests."""
 
     csv_path: str
-
+import pytest
 
 class PathOptions(BaseModel):
     """Holds paths to files."""
