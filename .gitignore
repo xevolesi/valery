@@ -1,3 +1,17 @@
 data/
 __pycache__/
 .pytest_cache/
+.ipynb_checkpoints/
+weights/*.pth
+weights/*.pt
+.dvc/lock
+.dvc/config.local
+.dvc/updater
+.dvc/updater.lock
+.dvc/state-journal
+.dvc/state-wal
+.dvc/state
+.dvc/cache
+.dvc/repos
+.dvc/tmp
+.dvc/plots
