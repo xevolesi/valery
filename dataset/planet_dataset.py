@@ -33,7 +33,7 @@ class PlanetDataset(Dataset):
 
     def __len__(self) -> int:
         """Return the length of the dataset."""
-        return len(self.list_images)
+        return len(self.images)
 
     def __getitem__(self, index: int) -> DataPoint:
         """

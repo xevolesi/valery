@@ -1,12 +1,179 @@
+# Configuration for tests. Do not edit it, please.
 tests:
   csv_path: test_data/data.csv
 
+# Configuration for path things.
 path:
+  # Path to folder with images.
   path_to_images: data/train-jpg
+
+  # Path to .csv file with training data.
   train_path: data/train_df.csv
+
+  # Path to .csv file with validation data.
   val_path: data/valid_df.csv
+
+  # Path to .csv file with test data.
   test_path: data/test_df.csv
 
+  # Path to folder for trained models.
+  weights_folder_path: weights
+
+# Training configuration. Contains all hyperparameters and other things.
 training:
+
+  # RNG seed.
   seed: 39
-  image_size: 224
+
+  # Total number of epochs for training procedure.
+  epochs: 20
+
+  # Device with which training procedure will be performed.
+  device: 'cuda:0'
+
+  # Number of workers for torch dataloaders.
+  num_workers: 4
+
+  # Batch size for training procedure.
+  batch_size: 32
+
+  # Image size for training procedure.
+  image_size: 256
+
+# DL model configuration.
+model:
+
+  # Name of the model for timm package.
+  name: resnet18
+  
+  # The number of target classes.
+  n_classes: 17
+
+  # Whether to use ImageNet's weights for initialization or not.
+  pretrained: true
+
+# Optimizer configuration. 
+optimizer:
+
+  # Alogrithm class. Use torch.optim.Adam, torch.optim.SGD, etc.
+  # Also provide optimizer parameters with names as in torch algorithm
+  algo: torch.optim.Adam
+  lr: 0.001
+  weight_decay: 0.0005
+
+# Scheduler configuration.
+scheduler:
+  
+  # Alogrithm class. Use torch.optim.lr_scheduler.StepLR, torch.optim.lr_scheduler.MultiStepLR, etc.
+  # Also provide optimizer parameters with names as in torch algorithm
+  algo: torch.optim.lr_scheduler.StepLR
+  step_size: 10
+  gamma: 0.5
+
+# Loss function.
+criterion:
+
+  # Alogrithm class. Use torch.nn.BCEWithLogitsLoss, torch.nn.MSELoss, etc.
+  # Also provide optimizer parameters with names as in torch algorithm
+  algo: torch.nn.BCEWithLogitsLoss
+
+augmentations:
+  train:
+    transform:
+      __class_fullname__: albumentations.core.composition.Compose
+      bbox_params: null
+      keypoint_params: null
+      p: 1
+      transforms:
+        - __class_fullname__: albumentations.augmentations.transforms.Resize
+          always_apply: true
+          height: 256
+          width: 256
+          p: 1.
+        - __class_fullname__: albumentations.core.composition.OneOf
+          transforms:
+            - __class_fullname__: albumentations.augmentations.transforms.HorizontalFlip
+              p: 0.5
+            - __class_fullname__: albumentations.augmentations.transforms.VerticalFlip
+              p: 0.5
+            - __class_fullname__: albumentations.augmentations.geometric.rotate.RandomRotate90
+              p: 0.5
+            - __class_fullname__: albumentations.augmentations.transforms.Transpose
+              p: 0.5
+        - __class_fullname__: albumentations.augmentations.transforms.Normalize
+          always_apply: true
+          max_pixel_value: 255.0
+          mean:
+            - 0.485
+            - 0.456
+            - 0.406
+          p: 1
+          std:
+            - 0.229
+            - 0.224
+            - 0.225
+        - __class_fullname__: albumentations.pytorch.transforms.ToTensorV2
+          transpose_mask: false
+          always_apply: true
+          p: 1
+  val:
+    transform:
+      __class_fullname__: albumentations.core.composition.Compose
+      bbox_params: null
+      keypoint_params: null
+      p: 1
+      transforms:
+        - __class_fullname__: albumentations.augmentations.transforms.Resize
+          always_apply: true
+          height: 256
+          width: 256
+          p: 1.
+        - __class_fullname__: albumentations.augmentations.transforms.Normalize
+          always_apply: true
+          max_pixel_value: 255.0
+          mean:
+            - 0.485
+            - 0.456
+            - 0.406
+          p: 1
+          std:
+            - 0.229
+            - 0.224
+            - 0.225
+        - __class_fullname__: albumentations.pytorch.transforms.ToTensorV2
+          transpose_mask: false
+          always_apply: true
+          p: 1
+  test:
+    transform:
+      __class_fullname__: albumentations.core.composition.Compose
+      bbox_params: null
+      keypoint_params: null
+      p: 1
+      transforms:
+        - __class_fullname__: albumentations.augmentations.transforms.Resize
+          always_apply: true
+          height: 256
+          width: 256
+          p: 1.
+        - __class_fullname__: albumentations.augmentations.transforms.Normalize
+          always_apply: true
+          max_pixel_value: 255.0
+          mean:
+            - 0.485
+            - 0.456
+            - 0.406
+          p: 1
+          std:
+            - 0.229
+            - 0.224
+            - 0.225
+        - __class_fullname__: albumentations.pytorch.transforms.ToTensorV2
+          transpose_mask: false
+          always_apply: true
+          p: 1
+
+# Configuration for ClearML logging.
+clearml:
+  project_name: Planet
+  experiment_number: 6
