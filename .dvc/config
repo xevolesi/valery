@@ -1,7 +1,0 @@
-[core]
-    no_scm = True
-    remote = myremote
-[cache]
-    type = "hardlink,symlink"
-['remote "myremote"']
-    url = gdrive://1lKSdX8_s85Q2wUbe_rVBAFYPfP2EwVUt

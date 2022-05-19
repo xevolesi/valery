@@ -60,13 +60,7 @@
 
 ### Для инференса
 
-1. Спульте модель командой:
-
-        dvc pull
-    
-    Веса должны сохраниться в директорию `weights/`;
-
-2. Выполните:
+Выполните:
 
         python predict.py \
         --model_path %Путь до файла модели. Если используете TorchScript, то указывайте путь до скриптованной модели, если не используете, то указывайте путь до обычной модели% \
@@ -77,5 +71,5 @@
 Ссылки на эксперименты: 
 
 1. [Эксперимент 6](https://app.community.clear.ml/projects/c73a61ffe1f84e0fb6597644adf2b98d/experiments/7ff77d25b3634ab98520455faced79eb/output/execution)
-1. [Эксперимент 5](https://app.community.clear.ml/projects/c73a61ffe1f84e0fb6597644adf2b98d/experiments/ac6fde48c0b24a9fb77a47e8be7cc95f/output/execution);
-2. [Эксперимент 4](https://app.community.clear.ml/projects/c73a61ffe1f84e0fb6597644adf2b98d/experiments/1563d56b13a0444b8ad4cb06eb77b09d/output/execution).
+2. [Эксперимент 5](https://app.community.clear.ml/projects/c73a61ffe1f84e0fb6597644adf2b98d/experiments/ac6fde48c0b24a9fb77a47e8be7cc95f/output/execution);
+3. [Эксперимент 4](https://app.community.clear.ml/projects/c73a61ffe1f84e0fb6597644adf2b98d/experiments/1563d56b13a0444b8ad4cb06eb77b09d/output/execution).
